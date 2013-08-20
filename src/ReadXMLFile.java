@@ -17,7 +17,7 @@ public class ReadXMLFile {
 
 		try {
 
-			File fXmlFile = new File("E:\\PruebaDOM\\src\\ref.xml");
+			File fXmlFile = new File("C:\\Users\\carlos\\git\\XML_fileproject\\XML_fileproject\\src\\ref.xml");
 			/* The line above is to be substituted by the path of the file containing the atlas
 			 * In case of an update, change the path by the one containing the latest version of
 			 * the atlas ontology.
@@ -25,24 +25,17 @@ public class ReadXMLFile {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
-
-			//optional, but recommended
-			//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("structure");
 			int temp = 0;
-			//for (int temp = 0; temp < nList.getLength(); temp++) {
-				Node nNode = nList.item(temp);
-				Structure struct = FillFields(nNode);
-				tags.add(struct);
-				//tagswithoutlevel.add(struct);
-			//}
-			
+			Node nNode = nList.item(temp);
+			Structure struct = FillFields(nNode);
+			tags.add(struct);
 			for (Structure str: tags){
-				PrintFields(str);
+				PrintNames(str);
 			}
 			for (Structure str: tagswithoutlevel){
-				PrintFields(str);
+				PrintNames(str);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,29 +57,19 @@ public class ReadXMLFile {
 		NodeList children = eElement.getElementsByTagName("children");
 		if (children.getLength() >= 1)
 		{
-		Node strNode = children.item(0);
-		Element fElement = (Element) strNode;
-		NodeList ChildStructures = fElement.getElementsByTagName("structure");
-		for (int temp = 0; temp < ChildStructures.getLength(); temp++) {
-			Node ChildStructuresN = ChildStructures.item(temp);
-			Structure Ch = FillFields(ChildStructuresN);
-			tag.addChild(Ch);
-		}
+			Node strNode = children.item(0);
+			Element fElement = (Element) strNode;
+			NodeList ChildStructures = fElement.getElementsByTagName("structure");
+			for (int temp = 0; temp < ChildStructures.getLength(); temp++) {
+				Node ChildStructuresN = ChildStructures.item(temp);
+				Structure Ch = FillFields(ChildStructuresN);
+				tag.addChild(Ch);
+			}
 		}
 		tagswithoutlevel.add(tag);
 		return tag;
 	}
-	public static void PrintFields (Structure str) {
-		//System.out.println(str.getAcronym());
-		//System.out.println(str.getAtlasId());
-		//System.out.println(str.getChildren().toString());
-		//System.out.println(str.getColorHexTriplet());
-		//System.out.println(str.getGraphOrder());
-		//System.out.println(str.getHemisphereId());
-		//System.out.println(str.getId());
+	public static void PrintNames (Structure str) {
 		System.out.println(str.getName());
-		//System.out.println(str.getOntologyId());
-		//System.out.println(str.getParentStructureId());
-		//System.out.println(str.getStLevel());
 	}
 }
