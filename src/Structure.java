@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}short"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}String"/>
  *         &lt;element name="atlas-id" type="{http://www.w3.org/2001/XMLSchema}String"/>
  *         &lt;element name="ontology-id" type="{http://www.w3.org/2001/XMLSchema}String"/>
  *         &lt;element name="acronym" type="{http://www.w3.org/2001/XMLSchema}string"/>

@@ -18,6 +18,10 @@ public class ReadXMLFile {
 		try {
 
 			File fXmlFile = new File("E:\\PruebaDOM\\src\\ref.xml");
+			/* The line above is to be substituted by the path of the file containing the atlas
+			 * In case of an update, change the path by the one containing the latest version of
+			 * the atlas ontology.
+			 */
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
