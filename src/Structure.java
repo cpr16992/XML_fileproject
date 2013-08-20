@@ -83,6 +83,7 @@ public class Structure {
     protected String parentStructureId;
     @XmlElement(required = true)
     protected List<Structure> children= new ArrayList<Structure>();
+    protected String graylevel;
 
     
     /**
@@ -307,6 +308,14 @@ public class Structure {
      */
     public void addChild(Structure value) {
         this.children.add(value);
+    }
+    
+    public String getGrayLevel() {
+    	return graylevel;
+    }
+    
+    public void setGrayLevel(String value){
+    	this.graylevel = value;
     }
 
 }
